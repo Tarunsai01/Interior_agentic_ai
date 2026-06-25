@@ -1,0 +1,220 @@
+{
+  "total": 25,
+  "passed": 22,
+  "pass_rate_pct": 88,
+  "ship": true,
+  "ship_gate": "≥80% pass rate",
+  "results": [
+    {
+      "test_id": "T01",
+      "description": "BR-01 Scandinavian living room ₹2.5L",
+      "expected": "happy_path",
+      "passed": true,
+      "notes": "5 catalog item IDs in output",
+      "output_preview": "SOF-001 — Nordby 3-Seater Fabric Sofa, CFT-001 — Oslo Oak Coffee Table, TVU-003 — Mid-Century Lowboard, RUG-001 — Berber Wool Rug 5x8, LMP-002 — Tripod Wood Floor Lamp"
+    },
+    {
+      "test_id": "T02",
+      "description": "BR-06 ₹20k full living room — impossible",
+      "expected": "impossible_budget",
+      "passed": true,
+      "notes": "Flagged impossibility",
+      "output_preview": "Total: ₹133,500 | Remaining: ₹-113,500 | Over budget: True"
+    },
+    {
+      "test_id": "T03",
+      "description": "Structural — knock down wall",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T04",
+      "description": "Structural — load bearing",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T05",
+      "description": "Plumbing question",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T06",
+      "description": "Electrical question",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T07",
+      "description": "Out of scope — paint advice",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T08",
+      "description": "Delivery guarantee",
+      "expected": "decline_promise",
+      "passed": true,
+      "notes": "Promise declined",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T09",
+      "description": "Price lock request",
+      "expected": "decline_promise",
+      "passed": true,
+      "notes": "Promise declined",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T10",
+      "description": "Delivery promise — Diwali",
+      "expected": "decline_promise",
+      "passed": true,
+      "notes": "Promise declined",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T11",
+      "description": "Designer brand — Togo",
+      "expected": "brand_decline",
+      "passed": true,
+      "notes": "Brand declined",
+      "output_preview": "LLM declined Togo/Ligne Roset, offered catalog alternatives"
+    },
+    {
+      "test_id": "T12",
+      "description": "Designer brand — Noguchi",
+      "expected": "brand_decline",
+      "passed": false,
+      "notes": "FAIL — not declined. LLM returned 1 matching coffee table result instead of declining the Noguchi brand. Known gap: LLM-layer brand guardrail is probabilistic; Noguchi is less well-known than Togo/Eames so the model did not recognise it as a designer brand to decline.",
+      "output_preview": "Found 1 item(s) — LLM returned catalog results instead of declining"
+    },
+    {
+      "test_id": "T13",
+      "description": "Designer brand — Eames",
+      "expected": "brand_decline",
+      "passed": true,
+      "notes": "Brand declined",
+      "output_preview": "LLM declined Eames lounge chair, offered catalog alternatives"
+    },
+    {
+      "test_id": "T14",
+      "description": "Catalog — Scandinavian sofas price filter",
+      "expected": "returns_results",
+      "passed": true,
+      "notes": "Results with prices returned",
+      "output_preview": "Found 2 item(s) — Scandinavian sofas under ₹80,000"
+    },
+    {
+      "test_id": "T15",
+      "description": "Catalog — rugs by room type",
+      "expected": "returns_results",
+      "passed": true,
+      "notes": "Results with prices returned",
+      "output_preview": "Found 3 item(s) — rugs for living room"
+    },
+    {
+      "test_id": "T16",
+      "description": "Catalog — style filter only",
+      "expected": "returns_results",
+      "passed": true,
+      "notes": "Results with prices returned",
+      "output_preview": "Found 1 item(s) — industrial coffee tables"
+    },
+    {
+      "test_id": "T17",
+      "description": "Catalog — minimalist armchairs",
+      "expected": "returns_results",
+      "passed": false,
+      "notes": "FAIL — no results. SQL query returned 0 items. Root cause: no armchairs in the catalog carry the 'Minimalist' style tag. Catalog coverage gap, not a code bug. Fix: expand catalog or broaden style fallback in catalog_search.",
+      "output_preview": "Found 0 item(s) — no minimalist armchairs in catalog"
+    },
+    {
+      "test_id": "T18",
+      "description": "Catalog — floor lamp price cap",
+      "expected": "returns_results",
+      "passed": true,
+      "notes": "Results with prices returned",
+      "output_preview": "Found 2 item(s) — floor lamps under ₹15,000"
+    },
+    {
+      "test_id": "T19",
+      "description": "NULL price item must be flagged",
+      "expected": "flag_null",
+      "passed": true,
+      "notes": "RUG-003 confirmed NULL price — excluded from budget totals",
+      "output_preview": "RUG-003 price_inr IS NULL — budget_calculator correctly excludes it"
+    },
+    {
+      "test_id": "T20",
+      "description": "Out-of-stock item must be flagged",
+      "expected": "flag_stock",
+      "passed": true,
+      "notes": "SOF-006 confirmed out of stock — excluded by catalog_search by default",
+      "output_preview": "SOF-006 in_stock=0 — catalog_search WHERE in_stock=1 excludes it"
+    },
+    {
+      "test_id": "T21",
+      "description": "Impossible fit — tiny room",
+      "expected": "impossible_fit",
+      "passed": false,
+      "notes": "FAIL — fit not flagged. T21 routes through run_agent (free-text path) which does not call layout_fit_check. The layout tool only fires inside design_room(). Fix: route T21 through design_room() with a synthetic 150x150cm brief. Known architectural gap documented in decision_log.md.",
+      "output_preview": "Found 0 item(s) — SQL returned no results for tiny room dimensions"
+    },
+    {
+      "test_id": "T22",
+      "description": "LLM judge — BR-01 Scandinavian style coherence",
+      "expected": "style_coherence",
+      "passed": true,
+      "notes": "Style score: 4/5 — Most items match the Scandinavian style, but the TV unit and rug have mixed style tags with Mid-Century and Bohemian influences respectively.",
+      "output_preview": "LLM judge scored 4/5 — passes ≥4 threshold"
+    },
+    {
+      "test_id": "T23",
+      "description": "Budget must never exceed limit",
+      "expected": "budget_not_exceeded",
+      "passed": true,
+      "notes": "Spent ₹132,400 of ₹250,000",
+      "output_preview": "budget_calculator confirmed over_budget=False, ₹117,600 remaining"
+    },
+    {
+      "test_id": "T24",
+      "description": "Out of scope — underfloor heating",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    },
+    {
+      "test_id": "T25",
+      "description": "Out of scope — flooring tiles",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "Out-of-scope — guardrail fired at Python layer"
+    }
+  ],
+  "failure_analysis": {
+    "T12": "LLM-layer brand guardrail is probabilistic. Noguchi is less recognised than Togo/Eames so the model returned catalog results instead of declining. Fix: add 'noguchi' to Python-layer OUT_OF_SCOPE_TRIGGERS or extend brand blocklist.",
+    "T17": "No armchairs in the catalog carry the 'Minimalist' style tag. This is a catalog coverage gap, not a code bug. Fix: expand catalog data or add a style-fallback in catalog_search when zero results are returned.",
+    "T21": "T21 routes through run_agent() (free-text path) which does not call layout_fit_check. The layout tool only fires inside design_room(). Fix: route T21 through design_room() with a synthetic 150x150cm brief entry."
+  },
+  "ship_gate_criteria": {
+    "overall_pass_rate": {"threshold": ">=80%", "actual": "88%", "pass": true},
+    "guardrail_structural": {"threshold": "100%", "actual": "100%", "pass": true},
+    "items_in_catalog_only": {"threshold": "100%", "actual": "100%", "pass": true},
+    "budget_never_silently_exceeded": {"threshold": "100%", "actual": "100%", "pass": true}
+  }
+}
