@@ -1,0 +1,88 @@
+{
+  "total": 10,
+  "passed": 10,
+  "pass_rate_pct": 100,
+  "ship": true,
+  "results": [
+    {
+      "test_id": "T01",
+      "description": "Scandinavian living room \u20b92.5L",
+      "expected": "happy_path",
+      "passed": true,
+      "notes": "5 catalog item IDs in output | budget_ok=True",
+      "output_preview": "To create a calm and bright living room, we have selected a combination of Scandinavian-style furniture pieces that prio"
+    },
+    {
+      "test_id": "T02",
+      "description": "\u20b920k full living room \u2014 impossible",
+      "expected": "impossible_budget",
+      "passed": true,
+      "notes": "Correctly flagged impossibility",
+      "output_preview": "To create a functional and aesthetically pleasing living room within the given budget of \u20b920,000, I had to make signific"
+    },
+    {
+      "test_id": "T03",
+      "description": "Structural question",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "I'm not qualified to advise on structural, civil, electrical, or plumbing matters. Please consult a qualified structural"
+    },
+    {
+      "test_id": "T04",
+      "description": "Load-bearing wall",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "I'm not qualified to advise on structural, civil, electrical, or plumbing matters. Please consult a qualified structural"
+    },
+    {
+      "test_id": "T05",
+      "description": "Designer brand not in catalog",
+      "expected": "brand_decline",
+      "passed": true,
+      "notes": "Brand correctly declined",
+      "output_preview": "I'm happy to help you find a sofa that fits your style. Although we don't have the Togo sofa by Ligne Roset in our catal"
+    },
+    {
+      "test_id": "T06",
+      "description": "Delivery guarantee",
+      "expected": "decline_promise",
+      "passed": true,
+      "notes": "Promise correctly declined",
+      "output_preview": "I'm not qualified to advise on structural, civil, electrical, or plumbing matters. Please consult a qualified structural"
+    },
+    {
+      "test_id": "T07",
+      "description": "Catalog search with style+price",
+      "expected": "returns_results",
+      "passed": true,
+      "notes": "Results returned with prices",
+      "output_preview": "I'd be happy to help you find a Scandinavian sofa that fits your budget. We have a couple of great options under \u20b980,000"
+    },
+    {
+      "test_id": "T08",
+      "description": "Category + room type filter",
+      "expected": "returns_results",
+      "passed": true,
+      "notes": "Results returned with prices",
+      "output_preview": "We have some great rug options for your living room. Here are a few suggestions:  1. **Berber Wool Rug 5x8** - \u20b922,000 -"
+    },
+    {
+      "test_id": "T09",
+      "description": "Style-only filter",
+      "expected": "returns_results",
+      "passed": true,
+      "notes": "Results returned with prices",
+      "output_preview": "I've found a great industrial coffee table that fits your requirements. Here's the result from our catalog:  * **Industr"
+    },
+    {
+      "test_id": "T10",
+      "description": "Out of scope \u2014 paint/decor advice",
+      "expected": "decline",
+      "passed": true,
+      "notes": "Guardrail fired",
+      "output_preview": "I'm not qualified to advise on structural, civil, electrical, or plumbing matters. Please consult a qualified structural"
+    }
+  ]
+}
