@@ -66,7 +66,7 @@ VS Code's smart quotes corrupted triple backticks and apostrophes during paste o
 
 1. **Substitute suggestion** — when an item is out of stock, automatically re-run catalog_search and offer the next best match
 2. **Multi-room support** — Bedroom and Dining briefs with room-specific must-have maps
-3. **LLM-as-judge eval scorer** — second Claude/Llama call that scores style coherence 1–5 with a written rubric
+3. Expand LLM-as-judge to score all room briefs, not just BR-01" so there's no contradiction between the log and the code.
 4. **Streamlit UI** — already scaffolded; wire `run_agent` and `design_room` to the frontend
 5. **Price NULL pipeline** — flag items to a data team with a structured report
 6. **Spatial layout engine** — grid-based placement that accounts for doorways and circulation paths
